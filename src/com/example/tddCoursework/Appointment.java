@@ -7,6 +7,12 @@ public class Appointment
     private Date date;
     private String description;
 
+    public Appointment(Date date, String description)
+    {
+        this.date = date;
+        this.description = description;
+    }
+
     public Date getDate()
     {
         return this.date;

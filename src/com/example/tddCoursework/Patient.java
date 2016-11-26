@@ -26,6 +26,11 @@ public class Patient
         appointments = new ArrayList<Appointment>();
     }
 
+    public int getId()
+    {
+        return this.ID;
+    }
+
     public String getName()
     {
         return this.name;
@@ -49,6 +54,12 @@ public class Patient
     public Date getDateOfBirth()
     {
         return this.dateOfBirth;
+    }
+
+    public void addAppointment(Date date, String desc)
+    {
+        Appointment a = new Appointment(date, desc);
+        appointments.add(a);
     }
 
     public List<Appointment> getAppointments()

@@ -1,4 +1,4 @@
-package com.example.tddCoursework;
+package com.example.tddCoursework.testing;
 
 import org.junit.Rule;
 import org.junit.ClassRule;
