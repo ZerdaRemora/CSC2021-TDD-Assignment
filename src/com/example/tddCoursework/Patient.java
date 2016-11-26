@@ -1,9 +1,13 @@
 package com.example.tddCoursework;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Represents a Patient at a doctor's surgery.
+ */
 public class Patient
 {
     private final int ID;
@@ -13,8 +17,23 @@ public class Patient
     private Date dateOfBirth;
     private List<Appointment> appointments;
 
+    /**
+     * Creates a Patient with the specified parameters.
+     * @param name Full name of the patient
+     * @param addr Address of the patient
+     * @param dob Date of Birth of the patient
+     */
     public Patient(String name, String addr, Date dob)
     {
+        if (name == null || name.isEmpty())
+            throw new IllegalArgumentException("Name must not be null or empty.");
+        if (addr == null || addr.isEmpty())
+            throw new IllegalArgumentException("Address must not be null or empty.");
+        if (dob == null)
+            throw new IllegalArgumentException("Date of birth must not be null.");
+        if (dob.after(Calendar.getInstance().getTime()))
+            throw new IllegalArgumentException("Date of birth must be in the past.");
+
         // Uses a static int to ensure a unique ID.
         this.ID = nextId;
         nextId++;
@@ -38,6 +57,8 @@ public class Patient
 
     public void setName(String name)
     {
+        if (name == null || name.isEmpty())
+            throw new IllegalArgumentException("Name must not be null or empty.");
         this.name = name;
     }
 
@@ -48,6 +69,8 @@ public class Patient
 
     public void setAddress(String address)
     {
+        if (address == null || address.isEmpty())
+            throw new IllegalArgumentException("Address must not be null or empty.");
         this.address = address;
     }
 
@@ -56,9 +79,16 @@ public class Patient
         return this.dateOfBirth;
     }
 
+    public void addAppointment(Appointment appointment)
+    {
+        if (appointment == null)
+            throw new IllegalArgumentException("Appointment must not be null.");
+        appointments.add(appointment);
+    }
+
     public void addAppointment(Date date, String desc)
     {
-        Appointment a = new Appointment(date, desc);
+        Appointment a = new Appointment(date, desc);    // Error checking is in Appointment constructor.
         appointments.add(a);
     }
 

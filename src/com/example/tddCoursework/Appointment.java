@@ -2,13 +2,25 @@ package com.example.tddCoursework;
 
 import java.util.Date;
 
+/**
+ * Represents a patient's appointment at a doctor's surgery.
+ */
 public class Appointment
 {
     private Date date;
     private String description;
 
+    /**
+     * Create an Appointment with the specified parameters.
+     * @param date The date of the appointment
+     * @param description Any notes about the appointment.
+     */
     public Appointment(Date date, String description)
     {
+        if (date == null)
+            throw new IllegalArgumentException("Appointment date must not be null.");
+        if (description == null) // Allowing empty strings here as some appointments may not require notes.
+            throw new IllegalArgumentException("Appointment notes must not be null.");
         this.date = date;
         this.description = description;
     }
