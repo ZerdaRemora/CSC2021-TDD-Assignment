@@ -36,9 +36,9 @@ public class AppointmentManager
         this.patients.add(patient);
     }
 
-    public void addPatient(String name, String addr, Date dob)
+    public void addPatient(String name, String addr, String phoneNumber, Date dob)
     {
-        this.patients.add(new Patient(name, addr, dob));    // Error checking is present in Patient constructor.
+        this.patients.add(new Patient(name, addr, phoneNumber, dob));    // Error checking is present in Patient constructor.
     }
 
     /* Should be implemented later.

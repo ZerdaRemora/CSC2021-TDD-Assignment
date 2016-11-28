@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Represents a Patient at a doctor's surgery.
@@ -14,21 +15,28 @@ public class Patient
     private static int nextId = 0;
     private String name;
     private String address;
+    private String phoneNumber;
     private Date dateOfBirth;
     private List<Appointment> appointments;
 
     /**
      * Creates a Patient with the specified parameters.
      * @param name Full name of the patient
+     * @param phoneNumber Phone Number of the Patient
      * @param addr Address of the patient
      * @param dob Date of Birth of the patient
      */
-    public Patient(String name, String addr, Date dob)
+    public Patient(String name, String addr, String phoneNumber, Date dob)
     {
+        Pattern phoneNoPattern = Pattern.compile("(\\+[0-9]{1,3})?[0-9]*");
         if (name == null || name.isEmpty())
             throw new IllegalArgumentException("Name must not be null or empty.");
         if (addr == null || addr.isEmpty())
             throw new IllegalArgumentException("Address must not be null or empty.");
+        if (phoneNumber == null || phoneNumber.isEmpty())
+            throw new IllegalArgumentException("Phone Number must not be null or empty.");
+        if (!phoneNoPattern.matcher(phoneNumber).matches())
+            throw new IllegalArgumentException("Phone Number is malformed.");
         if (dob == null)
             throw new IllegalArgumentException("Date of birth must not be null.");
         if (dob.after(Calendar.getInstance().getTime()))
@@ -40,6 +48,7 @@ public class Patient
 
         this.name = name;
         this.address = addr;
+        this.phoneNumber = phoneNumber;
         this.dateOfBirth = dob;
 
         appointments = new ArrayList<Appointment>();
