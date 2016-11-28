@@ -1,5 +1,6 @@
 package com.example.tddCoursework;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -7,7 +8,9 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * Represents a Patient at a doctor's surgery.
+ * Represents a Patient at a doctor's surgery. Each patient has an ID which is unique across all
+ * AppointmentManager systems in case of a patient changing doctor's surgery or if required as part
+ * of a larger system.
  */
 public class Patient
 {
@@ -28,7 +31,9 @@ public class Patient
      */
     public Patient(String name, String addr, String phoneNumber, Date dob)
     {
+        // Regex pattern for testing that a phoneNumber only contains numbers, or a '+' with country code.
         Pattern phoneNoPattern = Pattern.compile("(\\+[0-9]{1,3})?[0-9]*");
+
         if (name == null || name.isEmpty())
             throw new IllegalArgumentException("Name must not be null or empty.");
         if (addr == null || addr.isEmpty())
@@ -104,5 +109,20 @@ public class Patient
     public List<Appointment> getAppointments()
     {
         return this.appointments;
+    }
+
+    @Override
+    public String toString()
+    {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("ID: %s\nName: %s\nAddress: %s\nPhone Number: %s\nDate of Birth: %s\n",
+                ID, name, address, phoneNumber, dateFormat.format(dateOfBirth)));
+
+        for (Appointment a : appointments)
+        {
+            sb.append("\t" + a);
+        }
+        return sb.toString();
     }
 }

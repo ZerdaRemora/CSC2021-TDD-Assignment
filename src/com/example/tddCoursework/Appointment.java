@@ -1,5 +1,6 @@
 package com.example.tddCoursework;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -33,5 +34,12 @@ public class Appointment
     public String getDescription()
     {
         return this.description;
+    }
+
+    @Override
+    public String toString()
+    {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        return String.format("Appointment Date: %s - Note: %s\n", dateFormat.format(date), description);
     }
 }

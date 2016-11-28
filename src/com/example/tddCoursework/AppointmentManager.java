@@ -41,6 +41,24 @@ public class AppointmentManager
         this.patients.add(new Patient(name, addr, phoneNumber, dob));    // Error checking is present in Patient constructor.
     }
 
+    /**
+     * Helper function to find a Patient object given a Patient's ID.
+     * @param patientId The ID of the patient we are looking for.
+     * @return The Patient object with the given ID, or null if no Patient with
+     * the provided ID was found.
+     */
+    public Patient getPatientById(int patientId)
+    {
+        for (Patient p : patients)
+        {
+            if (p.getId() == patientId)
+            {
+                return p;
+            }
+        }
+        return null;
+    }
+
     /* Should be implemented later.
     public List<Patient> findPatient(String name)
     {
@@ -66,21 +84,4 @@ public class AppointmentManager
     }
     */
 
-    /**
-     * Private helper function to find a Patient object given a Patient's ID.
-     * @param patientId The ID of the patient we are looking for.
-     * @return The Patient object with the given ID, or null if no Patient with
-     * the provided ID was found.
-     */
-//    private Patient getPatientById(int patientId)
-//    {
-//        for (Patient p : patients)
-//        {
-//            if (p.getId() == patientId)
-//            {
-//                return p;
-//            }
-//        }
-//        return null;
-//    }
 }
