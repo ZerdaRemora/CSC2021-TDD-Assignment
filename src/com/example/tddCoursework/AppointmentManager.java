@@ -59,12 +59,31 @@ public class AppointmentManager
         return null;
     }
 
-    /* Should be implemented later.
+    /**
+     * Given a name, this method finds all Patients registered in the AppointmentManager with
+     * a name that matches exactly that of the one provided.
+     * @param name The name of the patient(s) to search for.
+     * @return A List of Patients with the name provided.
+     */
     public List<Patient> findPatient(String name)
     {
-        return null;
+        if (name == null)
+            throw new IllegalArgumentException("Name must not be null.");
+
+        List<Patient> matchingPatients = new ArrayList<Patient>();
+
+        for (Patient p : patients)
+        {
+            if (p.getName().equals(name))
+            {
+                matchingPatients.add(p);
+            }
+        }
+
+        return matchingPatients;
     }
 
+    /*
     public void changePatientName(int patientId, String name)
     {
         Patient p = getPatientById(patientId);

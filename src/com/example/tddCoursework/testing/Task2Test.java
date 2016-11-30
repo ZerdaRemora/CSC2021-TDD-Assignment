@@ -84,13 +84,17 @@ public class Task2Test extends AbstractLoggingJUnitTest
     }
 
     @Test
-    public void canChangePatient()
+    public void canChangePatientDetails()
     {
-        p.setName("John");
-        assertEquals("John", p.getName());
+        Calendar dob2 = Calendar.getInstance();
+        dob2.set(1984, 11, 25);
+        Patient p2 = new Patient("Check Test", "2 Test Street", "09876543210", dob2.getTime());
 
-        p.setAddress("123 Test Road");
-        assertEquals("123 Test Road", p.getAddress());
+        p2.setName("John");
+        assertEquals("John", p2.getName());
+
+        p2.setAddress("123 Test Road");
+        assertEquals("123 Test Road", p2.getAddress());
     }
 
     @Test (expected = IllegalArgumentException.class)
