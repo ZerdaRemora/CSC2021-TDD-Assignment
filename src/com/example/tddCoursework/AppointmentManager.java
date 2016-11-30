@@ -99,12 +99,12 @@ public class AppointmentManager
             throw new IllegalArgumentException("No Patient exists with that ID.");
         p.setAddress(address);
     }
-/*
+
     public void addAppointment(int patientId, Date date, String desc)
     {
         Patient p = getPatientById(patientId);
         p.addAppointment(date,  desc);
     }
-    */
+
 
 }
