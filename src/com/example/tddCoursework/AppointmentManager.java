@@ -83,19 +83,23 @@ public class AppointmentManager
         return matchingPatients;
     }
 
-    /*
+
     public void changePatientName(int patientId, String name)
     {
         Patient p = getPatientById(patientId);
+        if (p == null)
+            throw new IllegalArgumentException("No Patient exists with that ID.");
         p.setName(name);
     }
 
     public void changePatientAddress(int patientId, String address)
     {
         Patient p = getPatientById(patientId);
+        if (p == null)
+            throw new IllegalArgumentException("No Patient exists with that ID.");
         p.setAddress(address);
     }
-
+/*
     public void addAppointment(int patientId, Date date, String desc)
     {
         Patient p = getPatientById(patientId);
