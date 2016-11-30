@@ -44,30 +44,35 @@ public class Task3Feature8Test extends AbstractLoggingJUnitTest
     @Test
     public void canAddMultipleNewAppointmentsWithAppointmentManager()
     {
+        // Create a new Patient...
         Calendar dob2 = Calendar.getInstance();
         dob2.set(1975, 0, 19);
-        Patient p2 = new Patient("Bob Smith", "55 Road Street", "+447854932567", dob2.getTime());
-        am.addPatient(p2);
+        Patient patient1 = new Patient("Bob Smith", "55 Road Street", "+447854932567", dob2.getTime());
+        am.addPatient(patient1);
 
+        // ... and register two Appointments with the Patient.
         Calendar appDate1 = Calendar.getInstance();
         appDate1.set(2016, 6, 8);
-        am.addAppointment(p2.getId(), appDate1.getTime(), "Patient 1's First Appointment");
+        am.addAppointment(patient1.getId(), appDate1.getTime(), "Patient 1's First Appointment");
 
         Calendar appDate2 = Calendar.getInstance();
         appDate2.set(2016, 7, 8);
-        am.addAppointment(p2.getId(), appDate2.getTime(), "Patient 1's Second Appointment");
+        am.addAppointment(patient1.getId(), appDate2.getTime(), "Patient 1's Second Appointment");
 
+        // Create a third Patient...
         Calendar dob3 = Calendar.getInstance();
         dob3.set(1988, 1, 28);
-        Patient p3 = new Patient("Jane Doe", "321 Real Road", "01234567890", dob3.getTime());
-        am.addPatient(p3);
+        Patient patient2 = new Patient("Jane Doe", "321 Real Road", "01234567890", dob3.getTime());
+        am.addPatient(patient2);
 
+        // ... and register a single Appointment with that Patient.
         Calendar appDate3 = Calendar.getInstance();
         appDate3.set(2016, 8, 22);
-        am.addAppointment(p3.getId(), appDate3.getTime(), "Patient 2's First Appointment");
+        am.addAppointment(patient2.getId(), appDate3.getTime(), "Patient 2's First Appointment");
 
-        assertEquals("Appointments not added via AppointmentManager to Patient 1", 2, p2.getAppointments().size());
-        assertEquals("Appointment not added via AppointmentManager to Patient 2", 1, p3.getAppointments().size());
+        // Patient 1 should have 2 Appointments and Patient 2 should have 1.
+        assertEquals("Appointments not added via AppointmentManager to Patient 1", 2, patient1.getAppointments().size());
+        assertEquals("Appointment not added via AppointmentManager to Patient 2", 1, patient2.getAppointments().size());
     }
 
     @Test (expected = IllegalArgumentException.class)

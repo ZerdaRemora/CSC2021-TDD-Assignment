@@ -35,14 +35,25 @@ public class AppointmentManager
         return this.patients;
     }
 
+    /**
+     * Register a Patient with the AppointmentManager.
+     * @param patient The Patient object to register.
+     */
     public void addPatient(Patient patient)
     {
         if (patient == null)
-            throw new IllegalArgumentException("Appointment must not be null.");
+            throw new IllegalArgumentException("Patient must not be null.");
 
         this.patients.add(patient);
     }
 
+    /**
+     * Register a Patient with the AppointmentManager.
+     * @param name Name of the Patient
+     * @param addr Address of the Patient
+     * @param phoneNumber Phone Number of the Patient
+     * @param dob Date of Birth of the Patient
+     */
     public void addPatient(String name, String addr, String phoneNumber, Date dob)
     {
         this.patients.add(new Patient(name, addr, phoneNumber, dob));    // Error checking is present in Patient constructor.
@@ -90,7 +101,11 @@ public class AppointmentManager
         return matchingPatients;
     }
 
-
+    /**
+     * Change the Patient with the corresponding ID's name.
+     * @param patientId The ID of the Patient to change
+     * @param name The Patient's new name
+     */
     public void changePatientName(int patientId, String name)
     {
         Patient p = getPatientById(patientId);
@@ -99,6 +114,11 @@ public class AppointmentManager
         p.setName(name);
     }
 
+    /**
+     * Change the Patient with the corresponding ID's address.
+     * @param patientId The ID of the Patient to change
+     * @param address The Patient's new address
+     */
     public void changePatientAddress(int patientId, String address)
     {
         Patient p = getPatientById(patientId);
@@ -107,6 +127,12 @@ public class AppointmentManager
         p.setAddress(address);
     }
 
+    /**
+     * Add an appointment related to the Patient with the provided ID.
+     * @param patientId The ID of the Patient to which the Appointment belongs.
+     * @param date The date of the Appointment
+     * @param desc Any notes regarding the Appointment
+     */
     public void addAppointment(int patientId, Date date, String desc)
     {
         Patient p = getPatientById(patientId);

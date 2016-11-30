@@ -104,6 +104,10 @@ public class Patient
         return this.dateOfBirth;
     }
 
+    /**
+     * Register an Appointment with the Patient.
+     * @param appointment An Appointment object representing the Patient's appointment
+     */
     public void addAppointment(Appointment appointment)
     {
         if (appointment == null)
@@ -111,6 +115,11 @@ public class Patient
         appointments.add(appointment);
     }
 
+    /**
+     * Register an Appointment with the Patient.
+     * @param date The date of the Appointment
+     * @param desc Any notes regarding the Appointment
+     */
     public void addAppointment(Date date, String desc)
     {
         Appointment a = new Appointment(date, desc);    // Error checking is in Appointment constructor.
