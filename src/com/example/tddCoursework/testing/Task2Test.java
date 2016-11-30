@@ -55,6 +55,7 @@ public class Task2Test extends AbstractLoggingJUnitTest
     {
         assertEquals("Patient object not created correctly", "Test Test", p.getName());
         assertEquals("Patient object not created correctly", "1 Test Lane", p.getAddress());
+        assertEquals("Patient object not created correctly", "+4401234567890", p.getPhoneNumber());
 
         Calendar dob = Calendar.getInstance();
         dob.set(1977, 7, 7);

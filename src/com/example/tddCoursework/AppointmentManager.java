@@ -6,6 +6,13 @@ import java.util.List;
 
 /**
  * Represents the Appointment Manager system for a doctor's surgery.
+ *
+ * This class differs slightly from the design produced in Task 1. Firstly, I have added a
+ * method for adding an already made Patient object rather than constructing one in AppointmentManager
+ * (this.addPatient(Patient patient)).
+ * I have also added a 'getPatientById' helper method which is used by the AppointmentManager class when
+ * changing a Patient's name, address or adding an appointment. I added this as it will cut down on duplicated
+ * code in these 3 methods.
  */
 public class AppointmentManager
 {

@@ -5,6 +5,9 @@ import java.util.Date;
 
 /**
  * Represents a patient's appointment at a doctor's surgery.
+ *
+ * The only difference between this class and the design specified in Task 1 is the addition of
+ * a 'toString' method for neatly displaying the details of an Appointment.
  */
 public class Appointment
 {

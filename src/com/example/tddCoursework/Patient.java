@@ -11,6 +11,12 @@ import java.util.regex.Pattern;
  * Represents a Patient at a doctor's surgery. Each patient has an ID which is unique across all
  * AppointmentManager systems in case of a patient changing doctor's surgery or if required as part
  * of a larger system.
+ *
+ * This class differs slightly from the design produced in Task 1. Firstly, a 'getID' method has been added
+ * to help distinguish between similar Patients.
+ * I have also added a 'addAppointment(Appointment app)' method for adding an Appointment to a patient if it has
+ * already been created.
+ * Finally, I have overridden 'toString' to neatly display the details of a Patient.
  */
 public class Patient
 {
@@ -86,6 +92,11 @@ public class Patient
         if (address == null || address.isEmpty())
             throw new IllegalArgumentException("Address must not be null or empty.");
         this.address = address;
+    }
+
+    public String getPhoneNumber()
+    {
+        return this.phoneNumber;
     }
 
     public Date getDateOfBirth()
